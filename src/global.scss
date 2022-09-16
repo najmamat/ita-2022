@@ -1,0 +1,14 @@
+//I'm a noob and I can't get custom fonts with emotion css global to work.
+@import url('https://rsms.me/inter/inter.css');
+html { font-family: 'Inter', sans-serif; }
+@supports (font-variation-settings: normal) {
+  html { font-family: 'Inter var', sans-serif; }
+}
+
+* {
+    font-family: Inter;
+    box-sizing: border-box;
+}
+html{scroll-behavior:smooth}
+
+@import "~react-image-gallery/styles/scss/image-gallery.scss";

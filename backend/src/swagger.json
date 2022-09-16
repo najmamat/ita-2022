@@ -1,0 +1,154 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "version": "1.0.0",
+      "title": "My BE Project",
+      "description": "My User Project Application API",
+      "license": {
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+      }
+    },
+    "host": "localhost:1234",
+    "basePath": "/",
+    "tags": [
+      {
+        "name": "Articles",
+        "description": "API for articles in the system"
+      }
+    ],
+    "schemes": ["http"],
+    "consumes": ["application/json"],
+    "produces": ["application/json"],
+    "paths": {
+      "/articles": {
+        "get": {
+          "tags": ["Articles"],
+          "summary": "Get all articles in system",
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/definitions/Article"
+                }
+              }
+            }
+          }
+        }, "post": {
+          "tags": ["Articles"],
+          "summary": "Create a new article",
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "You should pass Article here",
+              "required": true,
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string"
+                  },
+                  "content": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "responses": {
+            "200": {
+              "description": "Article added successfully",
+              "schema": {
+                "$ref": "#/definitions/Article"
+              }
+            }
+          }
+        }
+      }, "/articles/$id": {
+        "get": {
+          "tags": ["Article"],
+          "summary": "Get Article corresponding to id",
+          
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/Article"
+                }
+              }
+            }
+          }
+        },
+        "put": {
+          "tags": ["Article"],
+          "summary": "Update Article corresponding to id",
+          "responses": {
+            "200": {
+              "description": "Successfully updated article",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/Article"
+                }
+              }
+            }
+          }
+        },
+        "delete": {
+          "tags": ["Article"],
+          "summary": "Delte Article corresponding to id",
+          "responses": {
+            "200": {
+              "description": "Successfully deleted article",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/Article"
+                }
+              }
+            }
+          }
+        }
+      }, "/articles/filter?search=$url": {
+        "get": {
+          "tags": ["Filter"],
+          "summary": "Filter Articles corresponding to url",
+          
+          "responses": {
+            "200": {
+              "description": "Successful operation",
+              "schema": {
+                "items": {
+                  "$ref": "#/definitions/Article"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "definitions": {
+      "Article": {
+        "required": ["title", "content"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "title": {
+            "type": "string",
+            "uniqueItems": true
+          },
+          "url": {
+            "type": "generated from title",
+            "uniqueItems": true
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }

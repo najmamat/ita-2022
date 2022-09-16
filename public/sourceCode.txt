@@ -1,0 +1,272 @@
+ def nactiRadekDoTabulky(self, line):
+        if self.currPerson is None:
+            return
+
+        if isinstance(self.currPerson, list):
+            for person in self.currPerson:
+                m = len(person.pole)
+                tmp = 0
+                counter = 0
+                for char in line:
+                    tmp += (self.dictPismena[char]*(32**counter))
+                    counter += 1
+                result = tmp % m
+
+                self.appendStringToTable(result, self.createString(line), person)
+            return
+
+        if isinstance(self.currPerson, Person):
+            if self.currPerson.d:
+                linestring = self.createString(line)
+                m = len(self.currPerson.pole)
+                tmp = 0
+                counter = 0
+                for char in linestring:
+                    tmp += (self.dictPismena[char] * (32 ** counter))
+                    counter += 1
+                result = tmp % m
+                for i in range(result, m):
+                    if self.currPerson.pole[i] is None:
+                        break
+                    if self.currPerson.pole[i] is not None:
+                        currMessage = self.currPerson.pole[i]
+                        if currMessage.message == linestring:
+                            currMessage.counter -= 1
+                            if currMessage.counter == 0:
+                                currMessage.deleted = True
+                                self.currPerson.filled -= 1
+                                if self.currPerson.filled < (len(self.currPerson.pole) * 0.3):
+                                    self.zmensiTabulku(self.currPerson)
+                            return
+                for j in range(0, result):
+                    if self.currPerson.pole[j] is None:
+                        break
+                    if self.currPerson.pole[j] is not None:
+                        currMessage = self.currPerson.pole[j]
+                        if currMessage.message == linestring:
+                            currMessage.counter -= 1
+                            if currMessage.counter == 0:
+                                currMessage.deleted = True
+                                self.currPerson.filled -= 1
+                                if self.currPerson.filled < (len(self.currPerson.pole) * 0.3):
+                                    self.zmensiTabulku(self.currPerson)
+                            return
+                return
+            m = len(self.currPerson.pole)
+            tmp = 0
+            counter = 0
+            for char in line:
+                tmp += (self.dictPismena[char] * (32 ** counter))
+                counter += 1
+            result = tmp % m
+            self.najdiHM(result, self.createString(line), self.currPerson)
+
+    def zmensiTabulku(self, person):
+        if len(person.pole) == person.startingSize:
+            return
+        tmppole = person.pole
+        person.pole = [None] * (len(person.pole) // 2)
+        for mess in tmppole:
+            if mess is not None:
+                if mess.deleted:
+                    continue
+                m = len(person.pole)
+                tmp = 0
+                counter = 0
+                for char in mess.message:
+                    tmp += (self.dictPismena[char] * (32 ** counter))
+                    counter += 1
+                result = tmp % m
+                stop = 0
+                for i in range(result, len(person.pole)):
+                    if person.pole[i] is None:
+                        person.pole[i] = mess
+                        stop = 1
+                        break
+                if stop == 0:
+                    for j in range(0, result):
+                        if person.pole[j] is None:
+                            person.pole[j] = mess
+                            break
+
+    def najdiHM(self, index, string, person):
+        y = len(person.pole)
+        for i in range(index, y):
+            if person.pole[i] is not None:
+                if person.pole[i].message == string:
+                    if person.pole[i].deleted:
+                        print("\t" + string + " " + "-1" + " " + "0")
+                        return
+                    print("\t" + string + " " + str(i) + " " + str(person.pole[i].counter))
+                    return
+        for j in range(0, index):
+            if person.pole[j] is not None:
+                if person.pole[j].message == string:
+                    if person.pole[j].deleted:
+                        print("\t" + string + " " + "-1" + " " + "0")
+                        return
+                    print("\t" + string + " " + str(j) + " " + str(person.pole[j].counter))
+                    return
+        print("\t" + string + " " + "-1" + " " + "0")
+
+    def appendStringToTable(self, index, string, person):
+        if person.pole[index] is not None:
+            if person.pole[index].deleted is True:
+                if person.pole[index].message == string:
+                    person.pole[index] = HashedMessage(string)
+                    person.filled += 1
+                    if person.filled > (len(person.pole) * 0.7):
+                        self.zvetsitPole(person)
+                    return
+                stop = 0
+                for i in range(index+1, len(person.pole)):
+                    if person.pole[i] is not None:
+                        if person.pole[i].message == string and person.pole[i].deleted is False:
+                            person.pole[i].counter += 1
+                            stop = 1
+                            return
+                        if person.pole[i] is None:
+                            stop = 1
+                            break
+                if stop == 0:
+                    for j in range(0, index-1):
+                        if person.pole[j] is not None:
+                            if person.pole[j].message == string and person.pole[j].deleted is False:
+                                person.pole[j].counter += 1
+                                return
+                        if person.pole[j] is None:
+                            break
+                person.pole[index] = HashedMessage(string)
+                person.filled += 1
+                if person.filled > (len(person.pole) * 0.7):
+                    self.zvetsitPole(person)
+                return
+            if person.pole[index].deleted is False:
+                if person.pole[index].message == string:
+                    person.pole[index].counter += 1
+                    return
+                elif index == len(person.pole)-1:
+                    self.appendStringToTable(0, string, person)
+                    return
+                else:
+                    self.appendStringToTable(index + 1, string, person)
+                    return
+        if person.pole[index] is None:
+            person.pole[index] = HashedMessage(string)
+            person.filled += 1
+            if person.filled > (len(person.pole) * 0.7):
+                self.zvetsitPole(person)
+            return
+
+    def zvetsitPole(self, person):
+        tmppole = person.pole
+        person.pole = [None] * (len(tmppole) * 2)
+        for mess in tmppole:
+            if mess is not None:
+                if mess.deleted:
+                    continue
+                m = len(person.pole)
+                tmp = 0
+                counter = 0
+                for char in mess.message:
+                    tmp += (self.dictPismena[char] * (32 ** counter))
+                    counter += 1
+                result = tmp % m
+                stop = 0
+                for i in range(result, len(person.pole)):
+                    if person.pole[i] is None:
+                        person.pole[i] = mess
+                        stop = 1
+                        break
+                if stop == 0:
+                    for j in range(0, result):
+                        if person.pole[j] is None:
+                            person.pole[j] = mess
+                            break
+
+    def poleControl1(self, person):
+        if person.filled > (len(person.pole) * 0.7):
+            tmppole = person.pole
+            person.pole = [None] * (len(tmppole) * 2)
+            for mess in tmppole:
+                if mess is not None:
+                    m = len(person.pole)
+                    tmp = 0
+                    counter = 0
+                    for char in mess.message:
+                        tmp += (self.dictPismena[char] * (32 ** counter))
+                        counter += 1
+                    result = tmp % m
+                    person.pole[result] = mess
+
+    def createString(self, line):
+        result = ""
+        for char in line:
+            result += char
+        return result
+
+    def i(self, line):
+        counter = 0
+        tmp = []
+        y = len(line)
+        if len(line) > 3:
+            for i in range(3, len(line)):
+                if line[i] != ' ':
+                    tmp.append(line[i])
+                if line[i] == ' ' or i == len(line)-1:
+                    num = "".join(tmp)
+                    self.people[counter].vytvorPole(int(num))
+                    counter += 1
+                    tmp = []
+        for i in range(counter, 5):
+            self.people[counter].vytvorPole(11)
+            counter += 1
+
+    def a(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.people
+
+    def direktivNumber1(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.p1
+
+    def direktivNumber2(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.p2
+
+    def direktivNumber3(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.p3
+
+    def direktivNumber4(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.p4
+
+    def direktivNumber5(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+        self.currPerson = self.p5
+
+    def p(self, line):
+        uniqueMessagesCounter = 0
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = False
+            for tmp in self.currPerson.pole:
+                if tmp is not None:
+                    if tmp.deleted is False:
+                        uniqueMessagesCounter += 1
+            self.currPerson.printed = True
+            print(self.currPerson.jmeno)
+            print(str("\t" + str(len(self.currPerson.pole))) + " " + str(uniqueMessagesCounter))
+        else:
+            print("Error: Chybny vstup!", file=sys.stderr)
+
+    def d(self, line):
+        if isinstance(self.currPerson, Person):
+            self.currPerson.d = True
+
