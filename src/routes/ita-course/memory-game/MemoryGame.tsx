@@ -35,6 +35,10 @@ const styles = {
       grid-template-columns: 1fr 1fr;
       margin: 0 0;
     }
+    @media screen and (max-width: ${theme.breakpoints.tablet}) {
+      grid-template-columns: 1fr 1fr;
+      margin: 0 0;
+    }
   `,
   cardContainer: css`
     display: flex;
