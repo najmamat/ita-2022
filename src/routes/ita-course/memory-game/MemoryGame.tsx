@@ -13,6 +13,7 @@ import { images } from './pics'
 import { motion } from 'framer-motion'
 import { shuffleCards } from '../../../helperFunctions'
 import { unstable_renderSubtreeIntoContainer } from 'react-dom'
+import { urls } from '../../../urls'
 import { useComponentDidMount } from '../../../helperFunctions'
 import { useEffect, useState } from 'react'
 import { useLocalStorage } from '../../../helperFunctions'
@@ -162,6 +163,7 @@ export const MemoryGame = () => {
         client='IT-absolvent React Course'
         type='Portfolio project'
         year='2022'
+        prevPageUrl={urls.ita.root}
       />
       <div className={containerContentStyle} id='about'>
         <GridComponent />

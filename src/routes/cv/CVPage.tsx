@@ -14,12 +14,12 @@ import { ParagraphBasic } from '../../components/UICore/ParagraphBasic'
 import { ResponsiveContainer } from 'recharts'
 import { RichText } from '../../components/UICore/RichText'
 import { Spacer } from '../../components/Spacer'
-import { SubpageInfo } from '../../components/SubpageInfo'
 import { containerContentStyle, theme } from '../../theme'
 import { css } from '@emotion/css'
 import { formatMoney } from '../../helperFunctions'
 import { useEffect, useState } from 'react'
 import CV from '../../documents/CV.pdf'
+import githubIcon from './github-icon.png'
 import linkedinIcon from './linkedin-icon.png'
 
 const styles = {
@@ -136,13 +136,18 @@ export const CVPage = () => {
             <ListItemTight>
               <div className={styles.projectDetailsWrapperStyle}>
                 <h2 className={styles.headingExtraSmall}>Socials</h2>
-                <a
-                  href='https://www.linkedin.com/in/matou%C5%A1-najman-923414224'
-                  target='_blank'
-                  rel='noreferrer'
-                >
-                  <img src={linkedinIcon} className={styles.iconStyle} />
-                </a>
+                <div>
+                  <a href='https://github.com/najmamat' target='_blank' rel='noreferrer'>
+                    <img src={githubIcon} className={styles.iconStyle} />
+                  </a>
+                  <a
+                    href='https://www.linkedin.com/in/matou%C5%A1-najman-923414224'
+                    target='_blank'
+                    rel='noreferrer'
+                  >
+                    <img src={linkedinIcon} className={styles.iconStyle} />
+                  </a>
+                </div>
               </div>
             </ListItemTight>
           </div>

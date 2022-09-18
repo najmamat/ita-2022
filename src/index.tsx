@@ -14,8 +14,13 @@ import { ITA } from './routes/ita-course/ITA-course'
 import { JSHistory } from './routes/ita-course/js-history/JSHistory'
 import { MemoryGame } from './routes/ita-course/memory-game/MemoryGame'
 import { Mortgage } from './routes/ita-course/mortgage/Mortgage'
+import { ReserveNow } from './routes/school-projects/reserve-now/ReserveNow'
+import { RoomRes } from './routes/school-projects/RoomRes'
+import { SchoolProjects } from './routes/school-projects/SchoolProjects'
 import { ScrollToTop } from './ScrollToTop'
 import { TodoAppRedux } from './routes/ita-course/todo-redux/TodoAppRedux'
+import { WordleClone } from './routes/school-projects/wordle/WordleClone'
+import { ZeptejteSeStudenta } from './routes/zeptejtesestudenta/ZeptejteSeStudenta'
 import { concatUrls } from './urls'
 import { urls } from './urls'
 import React from 'react'
@@ -37,6 +42,11 @@ root.render(
       <Route path={urls.ita.mortgageCalculator} element={<Mortgage />}></Route>
       <Route path={urls.ita.memoryGame} element={<MemoryGame />}></Route>
       <Route path={urls.cv} element={<CVPage />}></Route>
+      <Route path={urls.school.root} element={<SchoolProjects />}></Route>
+      <Route path={urls.school.roomRes} element={<RoomRes />}></Route>
+      <Route path={urls.school.reserveNow} element={<ReserveNow />}></Route>
+      <Route path={urls.school.wordleClone} element={<WordleClone />}></Route>
+      <Route path={urls.students} element={<ZeptejteSeStudenta />}></Route>
       <Route
         path={urls.ita.blog.blogNewArticle}
         element={

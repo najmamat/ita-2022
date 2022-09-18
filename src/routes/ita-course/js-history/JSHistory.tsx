@@ -47,6 +47,7 @@ export const JSHistory = () => {
         client='IT-absolvent React Course'
         type='Portfolio project'
         year='2022'
+        prevPageUrl={urls.ita.root}
       />
       <div className='fix picture'>
         <div

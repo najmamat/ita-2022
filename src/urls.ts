@@ -22,7 +22,14 @@ export const urls = {
       },
     },
   },
+  school: {
+    root: '/school-projects',
+    reserveNow: '/school-projects/reserve-now',
+    roomRes: '/school-projects/room-res',
+    wordleClone: '/school-projects/wordle-clone',
+  },
   cv: '/cv',
+  students: '/zeptejtesestudenta',
 }
 
 export const concatUrls = (urls: String[]) => {

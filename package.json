@@ -34,6 +34,7 @@
     "react-helmet": "^6.1.0",
     "react-image-gallery": "^1.2.9",
     "react-markdown": "^8.0.3",
+    "react-player": "^2.11.0",
     "react-redux": "^8.0.2",
     "react-responsive-carousel": "^3.2.23",
     "react-router-dom": "^6.3.0",

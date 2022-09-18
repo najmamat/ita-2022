@@ -46,6 +46,7 @@ export const ITA = () => {
         client='SmartBrains, Brno'
         type='React, Typescript course'
         year='2022'
+        prevPageUrl={urls.root}
       />
       <div className={containerContentStyle} id='about'>
         <Grid2Column>

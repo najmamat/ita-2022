@@ -137,6 +137,7 @@ export const BlogPage = () => {
         client='IT-absolvent React Course'
         type='Portfolio project'
         year='2022'
+        prevPageUrl={urls.ita.root}
       />
       <BlogContextProvider>
         <Blog />

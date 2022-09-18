@@ -12,6 +12,7 @@ import { SubpageInfo } from '../../../components/SubpageInfo'
 import { containerContentStyle, theme } from '../../../theme'
 import { css } from '@emotion/css'
 import { formatMoney } from '../../../helperFunctions'
+import { urls } from '../../../urls'
 import { useEffect, useState } from 'react'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
@@ -131,6 +132,7 @@ export const Mortgage = () => {
         client='IT-absolvent React Course'
         type='Portfolio project'
         year='2022'
+        prevPageUrl={urls.ita.root}
       />
       <div className={containerContentStyle} id='about'>
         <Grid2Column>

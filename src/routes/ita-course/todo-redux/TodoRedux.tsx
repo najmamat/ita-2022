@@ -12,6 +12,7 @@ import { changePositionOfElInArray } from '../../../helperFunctions'
 import { css } from '@emotion/css'
 import { motion } from 'framer-motion'
 import { theme } from '../../../theme'
+import { urls } from '../../../urls'
 import { useAppSelector } from '../../../helperFunctions'
 import { useDispatch, useSelector } from 'react-redux'
 import { useState } from 'react'
@@ -161,6 +162,7 @@ export const TodoRedux = () => {
         client='IT-absolvent React Course'
         type='Portfolio project'
         year='2022'
+        prevPageUrl={urls.ita.root}
       />
       <div className={styles.baseStyle} id='about'>
         <h2 className={styles.h2Style}>todos</h2>

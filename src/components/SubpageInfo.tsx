@@ -1,6 +1,7 @@
 import { Footer } from '../components/Footer'
 import { Grid2Column } from './UICore/Grid2Column'
 import { Header } from './navigation/Header'
+import { Link } from 'react-router-dom'
 import { ListItemTight } from './UICore/ListItemTight'
 import { ParagraphBasic } from './UICore/ParagraphBasic'
 import { RichText } from './UICore/RichText'
@@ -40,6 +41,27 @@ const styles = {
     font-weight: 600;
     letter-spacing: -0.03em;
   `,
+  leftColumnStyle: css`
+    display: flex;
+    flex-direction: column;
+  `,
+  btnStyle: css`
+    color: ${theme.colors.black};
+    margin-right: 6px;
+    margin-left: 6px;
+    padding: 6px 14px;
+    font-size: ${theme.fontsize.menu};
+    line-height: ${theme.lineheight.menu};
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    background-color: ${theme.colors.backgGrey};
+    cursor: pointer;
+    :hover {
+      background-color: #dcdcdc;
+      opacity: 0.8;
+    }
+  `,
 }
 type InfoProps = {
   title: string
@@ -47,13 +69,20 @@ type InfoProps = {
   client: string
   type: string
   year: string
+  prevPageUrl: string
 }
 
 export const SubpageInfo = (props: InfoProps) => {
   return (
     <div className={containerContentStyle} id='work'>
       <Grid2Column>
-        <h1 className={styles.headingExtraLarge}>{props.title}</h1>
+        <div className={styles.leftColumnStyle}>
+          <h1 className={styles.headingExtraLarge}>{props.title}</h1>
+          <Spacer height={16} />
+          <Link to={props.prevPageUrl}>
+            <button className={styles.btnStyle}>Back</button>
+          </Link>
+        </div>
         <div className='list-wrapper'>
           <RichText>
             <ParagraphBasic>{props.description}</ParagraphBasic>

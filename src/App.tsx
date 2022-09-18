@@ -186,8 +186,20 @@ export const App = () => {
           <ProjectLinkCard
             urlTo={urls.ita.root}
             title='IT-Absolvent, SmartBrains'
-            type='React, Typescript Course'
+            type='React, Typescript'
             coverImage={watch}
+          />
+          <ProjectLinkCard
+            urlTo={urls.school.root}
+            title='University projects, CTU'
+            type='Java, SpringBoot, React, Javascript'
+            coverImage={sphereImg}
+          />
+          <ProjectLinkCard
+            urlTo={urls.students}
+            title='ZeptejteSeStudenta.cz'
+            type='Website Design, Implementation'
+            coverImage={mobile1}
           />
         </div>
       </div>
