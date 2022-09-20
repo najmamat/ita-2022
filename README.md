@@ -5,7 +5,7 @@ Clone the repository to get started.
 ## [](#clone-repository)Clone
 
 ```
-git clone https://github.com/Katarca/ITA-2022
+git clone https://github.com/najmamat/portfolio.git
 ```
 
 ### [](#install)Install
