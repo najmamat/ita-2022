@@ -76,7 +76,27 @@ export const ReserveNow = () => {
         code='https://github.com/najmamat/reservenow'
         prevPageUrl={urls.school.root}
       />
-      <div className={containerContentStyle}>
+
+      <div
+        className={css`
+          ${containerContentStyle}
+          padding-top: 0;
+        `}
+      >
+        <Spacer height={32} />
+        <HeadingRegular>Showcase of the App</HeadingRegular>
+        <Spacer height={32} />
+        <ImageGallery
+          items={images}
+          showPlayButton={false}
+          disableThumbnailScroll={true}
+          showNav={false}
+          showFullscreenButton={false}
+          autoPlay={true}
+          slideInterval={6000}
+          lazyLoad={true}
+        />
+        <Spacer height={32} />
         <Grid2Column>
           <HeadingRegular>About the App</HeadingRegular>
 
@@ -126,21 +146,7 @@ export const ReserveNow = () => {
             </ParagraphBasic>
           </RichText>
         </Grid2Column>
-        <Spacer height={32} />
-        <HeadingRegular>Showcase of the App</HeadingRegular>
-        <Spacer height={32} />
-        <ImageGallery
-          items={images}
-          showPlayButton={false}
-          disableThumbnailScroll={true}
-          showNav={false}
-          showFullscreenButton={false}
-          autoPlay={true}
-          slideInterval={6000}
-          lazyLoad={true}
-        />
       </div>
-      <InsetCardContact />
       <Footer />
     </div>
   )

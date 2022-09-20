@@ -255,7 +255,6 @@ export const CVPage = () => {
           </div>
         </Grid2Column>
       </div>
-      <InsetCardContact />
       <Footer />
     </>
   )

@@ -74,7 +74,7 @@ type InfoProps = {
 
 export const SubpageInfo = (props: InfoProps) => {
   return (
-    <div className={containerContentStyle} id='work'>
+    <div className={containerContentStyle}>
       <Grid2Column>
         <div className={styles.leftColumnStyle}>
           <h1 className={styles.headingExtraLarge}>{props.title}</h1>

@@ -1,5 +1,6 @@
 export const urls = {
   root: '/',
+  contact: '/#contact',
   ita: {
     root: '/ita-course',
     jshistory: '/ita-course/jshistory',

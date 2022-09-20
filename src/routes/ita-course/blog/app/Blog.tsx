@@ -12,6 +12,7 @@ import { HeadingRegular } from '../../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../../components/InsetCardContact'
 import { Link } from 'react-router-dom'
 import { ParagraphBasic } from '../../../../components/UICore/ParagraphBasic'
+import { ProjectCodeInfo } from '../../../../components/ProjectWithCodeInfo'
 import { RichText } from '../../../../components/UICore/RichText'
 import { SubpageInfo } from '../../../../components/SubpageInfo'
 import { blogServices, serviceUrls } from '../../../../serviceLayer'
@@ -130,7 +131,10 @@ export const BlogPage = () => {
   return (
     <>
       <Header />
-      <SubpageInfo
+      <BlogContextProvider>
+        <Blog />
+      </BlogContextProvider>
+      <ProjectCodeInfo
         title='Blog with Markdown support'
         description={`This project was created as a part of IT-absolvent frontend ReactJS course. The
                 purpose of the project was to create a simple web application where users can create their own blogposts with Markdown support. Also REST API with Express.js was created to support the application.`}
@@ -138,10 +142,8 @@ export const BlogPage = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/blog'
       />
-      <BlogContextProvider>
-        <Blog />
-      </BlogContextProvider>
       <div
         className={css`
           ${containerContentStyle}
@@ -201,7 +203,6 @@ export const BlogPage = () => {
           lazyLoad={true}
         />
       </div>
-      <InsetCardContact />
       <Footer />
     </>
   )
@@ -216,7 +217,6 @@ const Blog = () => {
       <div
         className={css`
           ${containerContentStyle}
-          padding-top: 0;
         `}
       >
         <Grid2Column>

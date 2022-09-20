@@ -187,7 +187,6 @@ export const BlogNewArticle = () => {
           </motion.button>
         </form>
       </div>
-      <InsetCardContact />
       <Footer />
     </div>
   )

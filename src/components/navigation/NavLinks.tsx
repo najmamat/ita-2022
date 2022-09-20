@@ -1,3 +1,4 @@
+import { HashLink as Link } from 'react-router-hash-link'
 import { NavLink } from 'react-router-dom'
 import { css } from '@emotion/css'
 import { theme } from '../../theme'
@@ -52,9 +53,10 @@ export const NavLinks = () => {
       <a className={styles.navbarHref} href='#about'>
         About
       </a>
-      <a className={styles.navbarHref} href='#contact'>
-        Contact
-      </a>
+      <Link className={styles.navbarHref} to={urls.contact}>
+        {' '}
+        Contact{' '}
+      </Link>
     </div>
   )
 }

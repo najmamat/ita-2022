@@ -3,6 +3,7 @@ import { Grid2Column } from '../../components/UICore/Grid2Column'
 import { Header } from '../../components/navigation/Header'
 import { InsetCardContact } from '../../components/InsetCardContact'
 import { ProjectLinkCard } from '../../components/ProjectLinkCard'
+import { ProjectLinkComponent } from '../ita-course/ITA-course'
 import { SubpageInfo } from '../../components/SubpageInfo'
 import { containerContentStyle } from '../../theme'
 import { css } from '@emotion/css'
@@ -42,27 +43,23 @@ export const SchoolProjects = () => {
       />
       <div className={containerContentStyle}>
         <div className={styles.linksListStyle}>
-          <ProjectLinkCard
+          <ProjectLinkComponent
             urlTo={urls.school.reserveNow}
             title='ReserveNow'
             type='React, JS, Java, SpringBoot, PostgreSQL'
-            coverImage={castrocap}
           />
-          <ProjectLinkCard
+          <ProjectLinkComponent
             urlTo={urls.school.wordleClone}
             title='Wordle Clone'
             type='React, JS, MobX'
-            coverImage={castrocap}
           />
-          <ProjectLinkCard
+          <ProjectLinkComponent
             urlTo={urls.school.roomRes}
             title='RoomRes'
             type='Java, ELK Stack, Kafka, Microservices'
-            coverImage={castrocap}
           />
         </div>
       </div>
-      <InsetCardContact />
       <Footer />
     </div>
   )

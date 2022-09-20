@@ -4,6 +4,7 @@ import { H2 } from '../../../components/UICore/H2'
 import { Header } from '../../../components/navigation/Header'
 import { HeadingRegular } from '../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../components/InsetCardContact'
+import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { arrayToMatrix } from '../../../helperFunctions'
 import { containerContentStyle, theme } from '../../../theme'
@@ -154,7 +155,10 @@ export const MemoryGame = () => {
   return (
     <>
       <Header />
-      <SubpageInfo
+      <div className={containerContentStyle} id='about'>
+        <GridComponent />
+      </div>
+      <ProjectCodeInfo
         title='Memory Game'
         description={`This project was created as a part of IT-absolvent frontend ReactJS course. The
                 purpose of the project was to create a simple web application where user is trying to guess the pair of randomly distributed pictures across 4x4 field. On mobile devices, the game is made into 2x8 field.
@@ -164,10 +168,9 @@ export const MemoryGame = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/memory-game'
       />
-      <div className={containerContentStyle} id='about'>
-        <GridComponent />
-      </div>
+
       <InsetCardContact />
       <Footer />
     </>

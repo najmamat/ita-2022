@@ -1,4 +1,5 @@
 import '../global.scss'
+import { HashLink } from 'react-router-hash-link'
 import { Link } from 'react-router-dom'
 import { containerContentStyle, theme } from '../theme'
 import { css } from '@emotion/css'
@@ -79,30 +80,25 @@ export const Footer = () => {
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='/' aria-current='page'>
+            <Link className={styles.footerLinkStyle} to='#work' aria-current='page'>
               Work
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='/' aria-current='page'>
+            <Link className={styles.footerLinkStyle} to='#about' aria-current='page'>
               About
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='/' aria-current='page'>
+            <HashLink className={styles.footerLinkStyle} to={urls.contact}>
               Contact
-            </Link>
+            </HashLink>
           </li>
         </ul>
         <ul className={styles.footerListStyle}>
           <li className={styles.footerListItemStyle}>
             <Link className={styles.footerLinkStyle} to={urls.cv} aria-current='page'>
               CV
-            </Link>
-          </li>
-          <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='/' aria-current='page'>
-              Instagram
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>

@@ -106,7 +106,6 @@ export const BlogArticle = () => {
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{logic.article?.content ?? ''}</ReactMarkdown>
         </div>
       </div>
-      <InsetCardContact />
       <Footer />
     </div>
   )

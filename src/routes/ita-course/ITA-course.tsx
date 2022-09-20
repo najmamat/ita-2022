@@ -5,20 +5,18 @@ import { H2 } from '../../components/UICore/H2'
 import { Header } from '../../components/navigation/Header'
 import { HeadingRegular } from '../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../components/InsetCardContact'
+import { Link } from 'react-router-dom'
 import { ParagraphBasic } from '../../components/UICore/ParagraphBasic'
+import { ProjectCodeInfo } from '../../components/ProjectWithCodeInfo'
 import { ProjectLinkCard } from '../../components/ProjectLinkCard'
 import { RichText } from '../../components/UICore/RichText'
+import { Spacer } from '../../components/Spacer'
 import { SubpageInfo } from '../../components/SubpageInfo'
 import { containerContentStyle } from '../../theme'
 import { css } from '@emotion/css'
+import { motion } from 'framer-motion'
 import { theme } from '../../theme'
 import { urls } from '../../urls'
-import blogmobile from '../../images/blogmobile.png'
-import castrocap from '../../images/castrocap.png'
-import mobile from '../../images/mobile1.png'
-import pexeso from '../../images/pexeso.png'
-import sphere from '../../images/sphereImg.png'
-import watch from '../../images/watch.png'
 
 const styles = {
   linksListStyle: css`
@@ -29,10 +27,56 @@ const styles = {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: auto;
     column-count: 3;
-    column-gap: 24px;
+    column-gap: 12px;
     @media screen and (max-width: ${theme.breakpoints.tablet}) {
       column-count: 1;
     }
+  `,
+  h3Style: css`
+    margin-top: 0;
+    margin-bottom: 0;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  `,
+  h4Style: css`
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+  `,
+  projectLinkBaseStyles: css`
+    background-color: ${theme.colors.lynxwhite};
+    cursor: pointer;
+    overflow: hidden;
+    margin-bottom: 12px;
+    border-radius: 16px;
+    :hover {
+      opacity: 0.8;
+      scale: 1.01;
+    }
+  `,
+  projectLinkImgStyles: css`
+    width: 100%;
+    height: 100%;
+    display: inline-block;
+    vertical-align: middle;
+    max-width: 100%;
+  `,
+  workContentStyles: css`
+    padding: 24px 28px 24px 24px;
+  `,
+  projectLinkTitleTypeStyles: css`
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 1.3;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: ${theme.colors.black};
   `,
 }
 
@@ -40,14 +84,73 @@ export const ITA = () => {
   return (
     <div>
       <Header />
-      <SubpageInfo
+      <ProjectCodeInfo
         title='IT-Absolvent Course'
         description='I’m an absolvent of ITA Course 2022. The course took 10 weeks. The course included 3 hour lecture each week and 1 on 1 code reviews with our mentor. I have created my portfolio site during the as well bunch of small web app projects to showcase my skills as a programmer and designer.'
         client='SmartBrains, Brno'
         type='React, Typescript course'
         year='2022'
         prevPageUrl={urls.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course'
       />
+      <div className={containerContentStyle} id='work'>
+        <h2
+          className={css`
+            margin-top: 0px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            line-height: 1.3;
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            @media screen and (max-width: ${theme.breakpoints.mobile}) {
+              font-size: 18px;
+            }
+          `}
+        >
+          Portfolio projects
+          <span
+            className={css`
+              color: ${theme.colors.sonicsilver};
+            `}
+          >
+            &nbsp;&nbsp;·&nbsp;&nbsp;2022
+          </span>
+        </h2>
+        {/* Content Cards */}
+        <div className={styles.linksListStyle}>
+          <ProjectLinkComponent
+            urlTo={urls.ita.todoRedux}
+            title='Todo App'
+            type='Redux, React, TS'
+          />
+          <ProjectLinkComponent
+            urlTo={urls.ita.memoryGame}
+            title='Memory Game'
+            type='React, TS, Context'
+          />
+          <ProjectLinkComponent
+            urlTo={urls.ita.mortgageCalculator}
+            title='Mortgage Calculator'
+            type='MaterialUI, Recharts, Business logic '
+          />
+
+          <ProjectLinkComponent
+            urlTo={urls.ita.jshistory}
+            title='History of Javascript'
+            type='Static site, TS'
+          />
+          <ProjectLinkComponent
+            urlTo={urls.ita.blog.root}
+            title='Blog App'
+            type='Context, AJAX, Express, Swagger, Markdown'
+          />
+          <ProjectLinkComponent
+            urlTo={urls.ita.hackertyper}
+            title='Hacker Typer'
+            type='React, TS'
+          />
+        </div>
+      </div>
       <div className={containerContentStyle} id='about'>
         <Grid2Column>
           <HeadingRegular>About IT-Absolvent Course</HeadingRegular>
@@ -90,72 +193,58 @@ export const ITA = () => {
           </RichText>
         </Grid2Column>
       </div>
-      <div className={containerContentStyle} id='work'>
-        <h2
-          className={css`
-            margin-top: 0px;
-            margin-bottom: 20px;
-            font-size: 18px;
-            line-height: 1.3;
-            font-weight: 600;
-            letter-spacing: -0.03em;
-            @media screen and (max-width: ${theme.breakpoints.mobile}) {
-              font-size: 18px;
-            }
-          `}
-        >
-          Portfolio projects
-          <span
-            className={css`
-              color: ${theme.colors.sonicsilver};
-            `}
-          >
-            &nbsp;&nbsp;·&nbsp;&nbsp;2022
-          </span>
-        </h2>
-        {/* Content Cards */}
-        <div className={styles.linksListStyle}>
-          <ProjectLinkCard
-            urlTo={urls.ita.todoRedux}
-            title='Todo App - Redux'
-            type='React, Typescript Course'
-            coverImage={watch}
-          />
-          <ProjectLinkCard
-            urlTo={urls.ita.memoryGame}
-            title='Memory Game'
-            type='React, Typescript Course'
-            coverImage={castrocap}
-          />
-          <ProjectLinkCard
-            urlTo={urls.ita.mortgageCalculator}
-            title='Mortgage Calculator'
-            type='React, Typescript Course'
-            coverImage={sphere}
-          />
-
-          <ProjectLinkCard
-            urlTo={urls.ita.jshistory}
-            title='History of Javascript'
-            type='React, Typescript Course'
-            coverImage={pexeso}
-          />
-          <ProjectLinkCard
-            urlTo={urls.ita.blog.root}
-            title='Blog with Markdown'
-            type='React, Typescript Course'
-            coverImage={blogmobile}
-          />
-          <ProjectLinkCard
-            urlTo={urls.ita.hackertyper}
-            title='Hacker Typer'
-            type='React, Typescript Course'
-            coverImage={mobile}
-          />
-        </div>
-      </div>
-      <InsetCardContact />
       <Footer />
     </div>
+  )
+}
+
+type ProjectLink = {
+  urlTo: string
+  title: string
+  type: string
+}
+
+export const ProjectLinkComponent = (props: ProjectLink) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.015 }}
+      whileTap={{ scale: 0.9 }}
+      className={styles.projectLinkBaseStyles}
+    >
+      <Link
+        className={css`
+          text-decoration: none;
+        `}
+        to={props.urlTo}
+      >
+        <div className={styles.workContentStyles}>
+          <div className={styles.projectLinkTitleTypeStyles}>
+            <h3
+              className={css`
+                ${styles.h3Style}
+                color: ${theme.colors.black};
+                margin-top: 0;
+                margin-bottom: 0;
+              `}
+            >
+              {props.title}
+            </h3>
+          </div>
+          <Spacer height={4} />
+          <div className={styles.projectLinkTitleTypeStyles}>
+            <h4
+              className={css`
+                ${styles.h4Style}
+                color: ${theme.colors.sonicsilver};
+                margin-top: 0;
+                margin-bottom: 0;
+              `}
+            >
+              {props.type}
+            </h4>
+          </div>
+        </div>
+      </Link>
+    </motion.div>
   )
 }

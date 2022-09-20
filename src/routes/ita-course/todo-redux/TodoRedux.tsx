@@ -5,6 +5,7 @@ import { Footer } from '../../../components/Footer'
 import { H2 } from '../../../components/UICore/H2'
 import { Header } from '../../../components/navigation/Header'
 import { InsetCardContact } from '../../../components/InsetCardContact'
+import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { Todo } from './TodoAppRedux'
 import { addTodo, deleteTodo, setFilter, toggleTodo, updateTodo, updateTodos } from './todoSlice'
@@ -27,7 +28,7 @@ const styles = {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 128px;
+    padding-bottom: 64px;
   `,
   todoBaseStyle: css`
     display: table;
@@ -155,15 +156,6 @@ export const TodoRedux = () => {
   return (
     <>
       <Header />
-      <SubpageInfo
-        title='Todo App & Redux'
-        description='This project was created at the start of IT-absolvent frontend ReactJS course.
-        The purpose of the project was to create a simple web application where user will be able to add, delete and change state of tasks. The application is able to filter tasks by type. Tasks are editable and can be marked as done. You can also drag and drop tasks.'
-        client='IT-absolvent React Course'
-        type='Portfolio project'
-        year='2022'
-        prevPageUrl={urls.ita.root}
-      />
       <div className={styles.baseStyle} id='about'>
         <h2 className={styles.h2Style}>todos</h2>
         <div>
@@ -235,7 +227,16 @@ export const TodoRedux = () => {
           </Droppable>
         </DragDropContext>
       </div>
-      <InsetCardContact />
+      <ProjectCodeInfo
+        title='Todo App & Redux'
+        description='This project was created at the start of IT-absolvent frontend ReactJS course.
+        The purpose of the project was to create a simple web application where user will be able to add, delete and change state of tasks. The application is able to filter tasks by type. Tasks are editable and can be marked as done. You can also drag and drop tasks.'
+        client='IT-absolvent React Course'
+        type='Portfolio project'
+        year='2022'
+        prevPageUrl={urls.ita.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/todo-redux'
+      />
       <Footer />
     </>
   )

@@ -33,7 +33,38 @@ export const RoomRes = () => {
         code='https://github.com/najmamat/room-res'
         prevPageUrl={urls.school.root}
       />
-      <div className={containerContentStyle}>
+      <div
+        className={css`
+          ${containerContentStyle}
+          padding-top: 0;
+        `}
+      >
+        <HeadingRegular>Showcase video 1</HeadingRegular>
+        <Spacer height={32} />
+        <video
+          src={process.env.PUBLIC_URL + '/videos/showcase_1.mp4'}
+          width='3440'
+          height='1440'
+          style={{
+            maxWidth: '100%',
+            height: 'auto',
+          }}
+          controls
+        />
+        <Spacer height={64} />
+        <HeadingRegular>Showcase video 2</HeadingRegular>
+        <Spacer height={32} />
+        <video
+          src={process.env.PUBLIC_URL + '/videos/showcase_2.mp4'}
+          width='3440'
+          height='1440'
+          style={{
+            maxWidth: '100%',
+            height: 'auto',
+          }}
+          controls
+        />
+        <Spacer height={64} />
         <Grid2Column>
           <HeadingRegular>About the App</HeadingRegular>
 
@@ -70,33 +101,7 @@ export const RoomRes = () => {
             </ParagraphBasic>
           </RichText>
         </Grid2Column>
-        <HeadingRegular>Showcase video 1</HeadingRegular>
-        <Spacer height={32} />
-        <video
-          src={process.env.PUBLIC_URL + '/videos/showcase_1.mp4'}
-          width='3440'
-          height='1440'
-          style={{
-            maxWidth: '100%',
-            height: 'auto',
-          }}
-          controls
-        />
-        <Spacer height={64} />
-        <HeadingRegular>Showcase video 2</HeadingRegular>
-        <Spacer height={32} />
-        <video
-          src={process.env.PUBLIC_URL + '/videos/showcase_2.mp4'}
-          width='3440'
-          height='1440'
-          style={{
-            maxWidth: '100%',
-            height: 'auto',
-          }}
-          controls
-        />
       </div>
-      <InsetCardContact />
       <Footer />
     </div>
   )

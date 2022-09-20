@@ -6,6 +6,7 @@ import { H2 } from '../../../components/UICore/H2'
 import { Header } from '../../../components/navigation/Header'
 import { HeadingRegular } from '../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../components/InsetCardContact'
+import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { ResponsiveContainer } from 'recharts'
 import { Spacer } from '../../../components/Spacer'
 import { SubpageInfo } from '../../../components/SubpageInfo'
@@ -125,16 +126,7 @@ export const Mortgage = () => {
   return (
     <div>
       <Header />
-      <SubpageInfo
-        title='Mortgage Calculator'
-        description='This project was created as a part of IT-absolvent frontend ReactJS course. The
-                purpose of the project was to create a simple web application that calculates monthly mortgage payment'
-        client='IT-absolvent React Course'
-        type='Portfolio project'
-        year='2022'
-        prevPageUrl={urls.ita.root}
-      />
-      <div className={containerContentStyle} id='about'>
+      <div className={containerContentStyle} id='work'>
         <Grid2Column>
           <form>
             <HeadingRegular>Amount</HeadingRegular>
@@ -186,6 +178,17 @@ export const Mortgage = () => {
       <FirstGraphComponent mortgageData={dataMortgage} />
       <SecondGraphComponent mortgageData={dataMortgage} />
       <MortgageTable mortgageData={dataMortgage} />
+      <div id='about' />
+      <ProjectCodeInfo
+        title='Mortgage Calculator'
+        description='This project was created as a part of IT-absolvent frontend ReactJS course. The
+                purpose of the project was to create a simple web application that calculates monthly mortgage payment'
+        client='IT-absolvent React Course'
+        type='Portfolio project'
+        year='2022'
+        prevPageUrl={urls.ita.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/mortgage'
+      />
       <InsetCardContact />
       <Footer />
     </div>

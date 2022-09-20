@@ -83,6 +83,19 @@ export const ZeptejteSeStudenta = () => {
         prevPageUrl={urls.root}
       />
       <div className={containerContentStyle}>
+        <HeadingRegular>Showcase of the website</HeadingRegular>
+        <Spacer height={32} />
+        <ImageGallery
+          items={images}
+          showPlayButton={false}
+          disableThumbnailScroll={true}
+          showNav={false}
+          showFullscreenButton={false}
+          autoPlay={true}
+          slideInterval={6000}
+          lazyLoad={true}
+        />
+        <Spacer height={64} />
         <Grid2Column>
           <HeadingRegular>About the website</HeadingRegular>
 
@@ -108,19 +121,6 @@ export const ZeptejteSeStudenta = () => {
             <Blockquote text={'Design Content, Case study will be available soon.'}></Blockquote>
           </RichText>
         </Grid2Column>
-        <Spacer height={32} />
-        <HeadingRegular>Showcase of the website</HeadingRegular>
-        <Spacer height={32} />
-        <ImageGallery
-          items={images}
-          showPlayButton={false}
-          disableThumbnailScroll={true}
-          showNav={false}
-          showFullscreenButton={false}
-          autoPlay={true}
-          slideInterval={6000}
-          lazyLoad={true}
-        />
       </div>
       <InsetCardContact />
       <Footer />

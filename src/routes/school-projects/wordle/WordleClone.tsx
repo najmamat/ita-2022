@@ -40,7 +40,14 @@ export const WordleClone = () => {
         code='https://github.com/najmamat/wordgame-code'
         prevPageUrl={urls.school.root}
       />
-      <div className={containerContentStyle}>
+      <div
+        className={css`
+          ${containerContentStyle}
+          padding-top: 0;
+        `}
+      >
+        <img className={styles.imgStyle} src={wordleImg} />
+        <Spacer height={64} />
         <Grid2Column>
           <HeadingRegular>About the App</HeadingRegular>
 
@@ -81,8 +88,6 @@ export const WordleClone = () => {
           </RichText>
         </Grid2Column>
         <HeadingRegular>Showcase picture</HeadingRegular>
-        <Spacer height={32} />
-        <img className={styles.imgStyle} src={wordleImg} />
       </div>
       <InsetCardContact />
       <Footer />
