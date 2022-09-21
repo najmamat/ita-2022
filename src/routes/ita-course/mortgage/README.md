@@ -1,4 +1,4 @@
-# Mortgage Calculator App
+# [Mortgage Calculator App](https://matous.najman.cz/ita-course/mortgage-calculator)
 This project was created as a part of IT-absolvent frontend ReactJS course. 
 The purpose of the project was to create a simple web application that calculates monthly mortgage payment. 
 Each of the monthly payments are displayed in a table and rendered into graphs.
