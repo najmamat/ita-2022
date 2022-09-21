@@ -6,6 +6,7 @@ import { Header } from '../../../components/navigation/Header'
 import { HeadingRegular } from '../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../components/InsetCardContact'
 import { ParagraphBasic } from '../../../components/UICore/ParagraphBasic'
+import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { ProjectLinkCard } from '../../../components/ProjectLinkCard'
 import { RichText } from '../../../components/UICore/RichText'
 import { Spacer } from '../../../components/Spacer'
@@ -39,16 +40,6 @@ export const JSHistory = () => {
   return (
     <div>
       <Header />
-      <SubpageInfo
-        title='Javascript history Web Page'
-        description='This project was created at the start of IT-absolvent frontend ReactJS course. The
-                purpose of the project was to create a simple web application that would say
-                something about programming language we will be learning during course, Javascript.'
-        client='IT-absolvent React Course'
-        type='Portfolio project'
-        year='2022'
-        prevPageUrl={urls.ita.root}
-      />
       <div className='fix picture'>
         <div
           className={css`
@@ -168,7 +159,7 @@ export const JSHistory = () => {
           <img src={jsovertime} className={firstImgStyle} />
         </div>
       </div>
-      <div className={containerContentStyle}>
+      {/* <div className={containerContentStyle}>
         <HeadingRegular>Other work</HeadingRegular>
         <Spacer height={32} />
         <WorkGrid>
@@ -185,8 +176,18 @@ export const JSHistory = () => {
             coverImage={ntbcode}
           />
         </WorkGrid>
-      </div>
-      <InsetCardContact />
+      </div> */}
+      <ProjectCodeInfo
+        title='Javascript history Web Page'
+        description='This project was created at the start of IT-absolvent frontend ReactJS course. The
+                purpose of the project was to create a simple web application that would say
+                something about programming language we will be learning during course, Javascript.'
+        client='IT-absolvent React Course'
+        type='Portfolio project'
+        year='2022'
+        prevPageUrl={urls.ita.root}
+        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/js-history'
+      />
       <Footer />
     </div>
   )

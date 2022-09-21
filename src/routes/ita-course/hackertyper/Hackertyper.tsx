@@ -9,11 +9,11 @@ const codeColor = '#2ad400'
 
 const styles = {
   baseStyle: css`
-    width: 100%;
-    height: 100vh;
+    width: 105%;
+    height: 103vh;
     padding: 12px;
+    margin: -3em;
     background-color: black;
-    margin: -2em;
     font-family: ${theme.font.primary};
     overflow: hidden;
     border: none;
@@ -29,7 +29,7 @@ const styles = {
     color: ${codeColor};
     position: absolute;
     bottom: 30px;
-    width: 95%;
+    width: 91%;
     display: flex;
     justify-content: right;
     align-items: center;

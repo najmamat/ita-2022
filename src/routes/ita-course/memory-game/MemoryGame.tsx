@@ -5,6 +5,7 @@ import { Header } from '../../../components/navigation/Header'
 import { HeadingRegular } from '../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../components/InsetCardContact'
 import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
+import { ScrollDownIcon } from '../../../components/ScrollDownIcon'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { arrayToMatrix } from '../../../helperFunctions'
 import { containerContentStyle, theme } from '../../../theme'
@@ -155,9 +156,19 @@ export const MemoryGame = () => {
   return (
     <>
       <Header />
-      <div className={containerContentStyle} id='about'>
+      <div
+        className={css`
+          ${containerContentStyle}
+          height: 88vh;
+          display: flex;
+          align-items: center;
+        `}
+        id='about'
+      >
         <GridComponent />
       </div>
+      <ScrollDownIcon />
+      <div id='description'> </div>
       <ProjectCodeInfo
         title='Memory Game'
         description={`This project was created as a part of IT-absolvent frontend ReactJS course. The
@@ -170,8 +181,6 @@ export const MemoryGame = () => {
         prevPageUrl={urls.ita.root}
         code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/memory-game'
       />
-
-      <InsetCardContact />
       <Footer />
     </>
   )

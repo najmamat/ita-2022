@@ -131,7 +131,7 @@ export const ITA = () => {
           <ProjectLinkComponent
             urlTo={urls.ita.mortgageCalculator}
             title='Mortgage Calculator'
-            type='MaterialUI, Recharts, Business logic '
+            type='MaterialUI, Recharts'
           />
 
           <ProjectLinkComponent
@@ -142,7 +142,7 @@ export const ITA = () => {
           <ProjectLinkComponent
             urlTo={urls.ita.blog.root}
             title='Blog App'
-            type='Context, AJAX, Express, Swagger, Markdown'
+            type='Context, AJAX, Express'
           />
           <ProjectLinkComponent
             urlTo={urls.ita.hackertyper}

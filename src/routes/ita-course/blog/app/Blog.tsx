@@ -14,6 +14,7 @@ import { Link } from 'react-router-dom'
 import { ParagraphBasic } from '../../../../components/UICore/ParagraphBasic'
 import { ProjectCodeInfo } from '../../../../components/ProjectWithCodeInfo'
 import { RichText } from '../../../../components/UICore/RichText'
+import { ScrollDownIcon } from '../../../../components/ScrollDownIcon'
 import { SubpageInfo } from '../../../../components/SubpageInfo'
 import { blogServices, serviceUrls } from '../../../../serviceLayer'
 import { concatUrls, urls } from '../../../../urls'
@@ -125,6 +126,12 @@ const styles = {
     height: 50px;
     margin-right: 10px;
   `,
+  fullHeight: css`
+    height: 88vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  `,
 }
 
 export const BlogPage = () => {
@@ -134,6 +141,8 @@ export const BlogPage = () => {
       <BlogContextProvider>
         <Blog />
       </BlogContextProvider>
+      <ScrollDownIcon />
+      <div id='description'> </div>
       <ProjectCodeInfo
         title='Blog with Markdown support'
         description={`This project was created as a part of IT-absolvent frontend ReactJS course. The
@@ -213,7 +222,7 @@ const Blog = () => {
   const navigate = useNavigate()
 
   return (
-    <div>
+    <div className={styles.fullHeight}>
       <div
         className={css`
           ${containerContentStyle}

@@ -27,7 +27,7 @@ const styles = {
     margin-right: auto;
     background-color: ${theme.colors.white};
     @media screen and (max-width: ${theme.breakpoints.tablet}) {
-      padding: 0 20px;
+      padding: 0 0px;
     }
   `,
   logoWrapperStyle: css`
@@ -41,6 +41,7 @@ const styles = {
     position: relative;
     float: left;
     text-decoration: none;
+    margin-left: 2%;
     color: ${theme.colors.black};
   `,
   iconContainer: css`
@@ -56,6 +57,9 @@ const styles = {
     position: sticky;
     top: 0;
     z-index: 999;
+    width: 104%;
+    margin-left: -2%;
+    background-color: ${theme.colors.white};
   `,
 }
 export const Header = () => {

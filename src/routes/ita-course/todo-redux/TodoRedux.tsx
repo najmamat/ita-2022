@@ -5,20 +5,24 @@ import { Footer } from '../../../components/Footer'
 import { H2 } from '../../../components/UICore/H2'
 import { Header } from '../../../components/navigation/Header'
 import { InsetCardContact } from '../../../components/InsetCardContact'
+import { HashLink as Link } from 'react-router-hash-link'
 import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
+import { ScrollDownIcon } from '../../../components/ScrollDownIcon'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { Todo } from './TodoAppRedux'
 import { addTodo, deleteTodo, setFilter, toggleTodo, updateTodo, updateTodos } from './todoSlice'
-import { changePositionOfElInArray } from '../../../helperFunctions'
+import { changePositionOfElInArray, useComponentDidMount } from '../../../helperFunctions'
 import { css } from '@emotion/css'
-import { motion } from 'framer-motion'
+import { motion, useAnimation } from 'framer-motion'
 import { theme } from '../../../theme'
 import { urls } from '../../../urls'
 import { useAppSelector } from '../../../helperFunctions'
+import { useContext, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { useState } from 'react'
+import { useEffect } from 'react'
 import boxIcon from './icon-box.png'
 import delIcon from './icon-remove.png'
+import dropdownIcon from '../../../images/mousedown.png'
 import tickedIcon from './icon-ticked-box.png'
 import type { RootState } from './store'
 
@@ -29,6 +33,7 @@ const styles = {
     align-items: center;
     justify-content: center;
     padding-bottom: 64px;
+    height: 88vh;
   `,
   todoBaseStyle: css`
     display: table;
@@ -227,6 +232,8 @@ export const TodoRedux = () => {
           </Droppable>
         </DragDropContext>
       </div>
+      <ScrollDownIcon />
+      <div id='description'> </div>
       <ProjectCodeInfo
         title='Todo App & Redux'
         description='This project was created at the start of IT-absolvent frontend ReactJS course.

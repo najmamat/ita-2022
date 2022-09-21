@@ -243,7 +243,7 @@ export const App = () => {
         </Grid2Column>
       </div>
       <div className={styles.aboutImgWrapperStyle}>
-        <img src={fireImg} className={styles.aboutImgStyle} loading='lazy'></img>
+        <img src={fireImg} className={styles.aboutImgStyle}></img>
       </div>
       <div className={containerContentStyle}>
         <Grid2Column>

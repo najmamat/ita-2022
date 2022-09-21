@@ -2,7 +2,6 @@
   "name": "new-react-app",
   "version": "0.1.0",
   "build": "react-scripts build && cp build/index.html build/404.html",
-  "homepage": "https://najmamat.github.io/portfolio",
   "private": true,
   "dependencies": {
     "@djthoms/pretty-checkbox": "^3.1.0",
