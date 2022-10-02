@@ -15,6 +15,7 @@ import { ParagraphBasic } from '../../../../components/UICore/ParagraphBasic'
 import { ProjectCodeInfo } from '../../../../components/ProjectWithCodeInfo'
 import { RichText } from '../../../../components/UICore/RichText'
 import { ScrollDownIcon } from '../../../../components/ScrollDownIcon'
+import { Spacer } from '../../../../components/Spacer'
 import { SubpageInfo } from '../../../../components/SubpageInfo'
 import { blogServices, serviceUrls } from '../../../../serviceLayer'
 import { concatUrls, urls } from '../../../../urls'
@@ -127,7 +128,10 @@ const styles = {
     margin-right: 10px;
   `,
   fullHeight: css`
-    height: 88vh;
+    height: 84vh;
+    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+      height: 80vh;
+    }
     display: flex;
     align-items: center;
     justify-content: center;
@@ -142,6 +146,7 @@ export const BlogPage = () => {
         <Blog />
       </BlogContextProvider>
       <ScrollDownIcon />
+      <Spacer height={16} />
       <div id='description'> </div>
       <ProjectCodeInfo
         title='Blog with Markdown support'
@@ -217,6 +222,31 @@ export const BlogPage = () => {
   )
 }
 
+const dbError = (
+  <div
+    className={css`
+      color: ${theme.colors.grey};
+      padding-top: 10px;
+      font-weight: 600;
+    `}
+  >
+    To get the app to work download repository from{' '}
+    <a
+      href='https://github.com/najmamat/portfolio/tree/main/backend'
+      target='_blank'
+      rel='noreferrer'
+      className={css`
+        color: ${theme.colors.black};
+        text-decoration: none;
+        font-weight: 800;
+      `}
+    >
+      github
+    </a>{' '}
+    and run it on localhost.
+  </div>
+)
+
 const Blog = () => {
   const logic = useContext(BlogContext)
   const navigate = useNavigate()
@@ -237,18 +267,20 @@ const Blog = () => {
               `}
             >
               {logic.articleError}
+              {logic.dbUnavailable && dbError}
             </h3>
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              className={styles.btnStyle}
-              onClick={() => {
-                navigate(urls.ita.blog.blogNewArticle)
-              }}
-            >
-              Create Article
-            </motion.button>
-            {/* <h3>{logic.filterError}</h3> */}
+            {!logic.dbUnavailable && (
+              <motion.button
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                className={styles.btnStyle}
+                onClick={() => {
+                  navigate(urls.ita.blog.blogNewArticle)
+                }}
+              >
+                Create Article
+              </motion.button>
+            )}
           </div>
           <div>
             <div className={styles.inputContainer}>

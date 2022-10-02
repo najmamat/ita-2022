@@ -101,7 +101,17 @@ export const BlogArticle = () => {
             Delete Article
           </motion.button>
         </Link>
-        {logic.articleError}
+        <div
+          className={css`
+            color: ${theme.colors.red};
+            font-weight: 800;
+            font-size: ${theme.fontsize.text};
+            margin-top: 20px;
+          `}
+        >
+          {logic.articleError}
+        </div>
+
         <div className={styles.articleContentContainer}>
           <ReactMarkdown remarkPlugins={[remarkGfm]}>{logic.article?.content ?? ''}</ReactMarkdown>
         </div>

@@ -15,6 +15,11 @@ import { css } from '@emotion/css'
 import { formatMoney } from '../../../helperFunctions'
 import { urls } from '../../../urls'
 import { useEffect, useState } from 'react'
+import Box from '@mui/material/Box'
+import Collapse from '@mui/material/Collapse'
+import IconButton from '@mui/material/IconButton'
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import Paper from '@mui/material/Paper'
 import Table from '@mui/material/Table'
 import TableBody from '@mui/material/TableBody'
@@ -32,6 +37,9 @@ const styles = {
     padding: 16px 16px 16px 50px;
     width: 420px;
     border-radius: 8px;
+    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+      width: 60vw;
+    }
   `,
   inputContainerStyle: css`
     display: flex;
@@ -116,6 +124,33 @@ const calculateAnnualPayment = (arg: {
   return dataMortgage
 }
 
+type formattedDataMortgage = {
+  firstPayment: dataMortgage
+  sameYearPayments: dataMortgage[]
+  year: number
+}
+
+const formatMortgageData = (data: dataMortgage[]) => {
+  const result = [] as formattedDataMortgage[]
+  let sameYearPayments = [] as dataMortgage[]
+  let firstYearPayment = {} as dataMortgage
+  let year = 1
+  data.forEach(row => {
+    if ((row.order - 1) % 12 === 0) {
+      firstYearPayment = row
+    } else {
+      sameYearPayments.push(row)
+      if (row.order % 12 === 0) {
+        result.push({ firstPayment: firstYearPayment, sameYearPayments, year })
+        sameYearPayments = [] as dataMortgage[]
+        firstYearPayment = {} as dataMortgage
+        year++
+      }
+    }
+  })
+  return result
+}
+
 export const Mortgage = () => {
   const [amount, setAmount] = useState(100000)
   const [interest, setInterest] = useState(3.5)
@@ -175,9 +210,31 @@ export const Mortgage = () => {
           </div>
         </Grid2Column>
       </div>
-      <FirstGraphComponent mortgageData={dataMortgage} />
-      <SecondGraphComponent mortgageData={dataMortgage} />
-      <MortgageTable mortgageData={dataMortgage} />
+      <div
+        className={css`
+          display: flex;
+          justify-content: center;
+          padding: 0px 160px;
+          @media screen and (max-width: ${theme.breakpoints.mobile}) {
+            padding: 0 0;
+          }
+        `}
+      >
+        <FirstGraphComponent mortgageData={dataMortgage} />
+      </div>
+      <div
+        className={css`
+          display: flex;
+          justify-content: center;
+          padding: 0px 160px;
+          @media screen and (max-width: ${theme.breakpoints.mobile}) {
+            padding: 0 0;
+          }
+        `}
+      >
+        <SecondGraphComponent mortgageData={dataMortgage} />
+      </div>
+      <MortgageTable mortgageData={formatMortgageData(dataMortgage)} months={years * 12} />
       <div id='about' />
       <ProjectCodeInfo
         title='Mortgage Calculator'
@@ -206,7 +263,7 @@ type dataMortgage = {
   monthlyPrincipalInflation: number
 }
 
-const MortgageTable = (props: { mortgageData: dataMortgage[] }) => {
+const MortgageTable = (props: { mortgageData: formattedDataMortgage[]; months: number }) => {
   return (
     <div className={containerContentStyle}>
       <TableContainer
@@ -218,8 +275,9 @@ const MortgageTable = (props: { mortgageData: dataMortgage[] }) => {
         <Table sx={{ minWidth: 650, height: 440 }} stickyHeader aria-label='sticky table'>
           <TableHead>
             <TableRow>
+              <TableCell></TableCell>
               <TableCell>
-                <div className={styles.headingTable}>Order</div>
+                <div className={styles.headingTable}>Month/Year</div>
               </TableCell>
               <TableCell sx={styles.tableHeaderStyles} align='right'>
                 Payment&nbsp;(monthly)
@@ -237,23 +295,12 @@ const MortgageTable = (props: { mortgageData: dataMortgage[] }) => {
           </TableHead>
           <TableBody>
             {props.mortgageData.map(mortgage => (
-              <TableRow key={mortgage.order}>
-                <TableCell sx={styles.tableCellStyles} component='th' scope='row'>
-                  {mortgage.order}
-                </TableCell>
-                <TableCell sx={styles.tableCellStyles} align='right'>
-                  {formatMoney(mortgage.monthlyPayment)}
-                </TableCell>
-                <TableCell sx={styles.tableCellStyles} align='right'>
-                  {formatMoney(mortgage.amount)}
-                </TableCell>
-                <TableCell sx={styles.tableCellStyles} align='right'>
-                  {formatMoney(mortgage.monthlyRatePayment)}
-                </TableCell>
-                <TableCell sx={styles.tableCellStyles} align='right'>
-                  {formatMoney(mortgage.monthlyPrincipal)}
-                </TableCell>
-              </TableRow>
+              <Row
+                key={mortgage.firstPayment.order}
+                firstPayment={mortgage.firstPayment}
+                otherPayments={mortgage.sameYearPayments}
+                year={mortgage.year}
+              />
             ))}
           </TableBody>
         </Table>
@@ -262,15 +309,90 @@ const MortgageTable = (props: { mortgageData: dataMortgage[] }) => {
   )
 }
 
+const Row = (props: {
+  firstPayment: dataMortgage
+  otherPayments: dataMortgage[]
+  year: number
+}) => {
+  const [open, setOpen] = useState(false)
+
+  return (
+    <React.Fragment>
+      <TableRow sx={{ '& > *': { borderBottom: 'unset' } }}>
+        <TableCell>
+          <IconButton aria-label='expand row' size='small' onClick={() => setOpen(!open)}>
+            {open ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+          </IconButton>
+        </TableCell>
+        <TableCell sx={styles.tableCellStyles} align='right' component='th' scope='row'>
+          {`${props.firstPayment.order % 12} / ${props.year}`}
+        </TableCell>
+        <TableCell sx={styles.tableCellStyles} align='right' component='th' scope='row'>
+          {formatMoney(props.firstPayment.monthlyPayment)}
+        </TableCell>
+        <TableCell sx={styles.tableCellStyles} align='right' component='th' scope='row'>
+          {formatMoney(props.firstPayment.amount)}
+        </TableCell>
+        <TableCell sx={styles.tableCellStyles} align='right' component='th' scope='row'>
+          {formatMoney(props.firstPayment.monthlyRatePayment)}
+        </TableCell>
+        <TableCell sx={styles.tableCellStyles} align='right' component='th' scope='row'>
+          {formatMoney(props.firstPayment.monthlyPrincipal)}
+        </TableCell>
+      </TableRow>
+      <TableRow>
+        <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
+          <Collapse in={open} timeout='auto' unmountOnExit>
+            <Box sx={{ margin: 1 }}>
+              <Table size='small' aria-label='other-payments'>
+                <TableHead>
+                  <TableRow>
+                    <TableCell sx={styles.tableCellStyles}>Month</TableCell>
+                    <TableCell sx={styles.tableCellStyles}>Payment</TableCell>
+                    <TableCell sx={styles.tableCellStyles}>Amount</TableCell>
+                    <TableCell sx={styles.tableCellStyles}>Interest</TableCell>
+                    <TableCell sx={styles.tableCellStyles}>Principal</TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody>
+                  {props.otherPayments.map(payment => (
+                    <TableRow sx={styles.tableCellStyles} key={payment.order}>
+                      <TableCell sx={styles.tableCellStyles} component='th' scope='row'>
+                        {payment.order % 12 === 0 ? 12 : payment.order % 12}
+                      </TableCell>
+                      <TableCell sx={styles.tableCellStyles}>
+                        {formatMoney(payment.monthlyPayment)}
+                      </TableCell>
+                      <TableCell sx={styles.tableCellStyles}>
+                        {formatMoney(payment.amount)}
+                      </TableCell>
+                      <TableCell sx={styles.tableCellStyles}>
+                        {formatMoney(payment.monthlyRatePayment)}
+                      </TableCell>
+                      <TableCell sx={styles.tableCellStyles}>
+                        {formatMoney(payment.monthlyPrincipal)}
+                      </TableCell>
+                    </TableRow>
+                  ))}
+                </TableBody>
+              </Table>
+            </Box>
+          </Collapse>
+        </TableCell>
+      </TableRow>
+    </React.Fragment>
+  )
+}
+
 const FirstGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
   return (
-    <ResponsiveContainer width='100%' height={400}>
+    <ResponsiveContainer width='85%' height={400}>
       <LineChart
         data={props.mortgageData}
         margin={{
           top: 5,
-          right: 110,
-          left: 90,
+          right: 0,
+          left: 0,
           bottom: 5,
         }}
       >
@@ -311,13 +433,13 @@ const FirstGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
 
 const SecondGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
   return (
-    <ResponsiveContainer width='100%' height={400}>
+    <ResponsiveContainer width='85%' height={400}>
       <LineChart
         data={props.mortgageData}
         margin={{
           top: 40,
-          right: 110,
-          left: 90,
+          right: 0,
+          left: 0,
           bottom: 5,
         }}
       >

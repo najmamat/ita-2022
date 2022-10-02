@@ -9,14 +9,16 @@ const codeColor = '#2ad400'
 
 const styles = {
   baseStyle: css`
-    width: 105%;
-    height: 103vh;
+    width: 101vw;
+    height: 101vh;
     padding: 12px;
-    margin: -3em;
     background-color: black;
     font-family: ${theme.font.primary};
     overflow: hidden;
     border: none;
+    position: fixed;
+    margin-left: -1vw;
+    margin-top: -1vh;
   `,
   contentStyle: css`
     color: ${codeColor};
@@ -28,7 +30,7 @@ const styles = {
   linkStyle: css`
     color: ${codeColor};
     position: absolute;
-    bottom: 30px;
+    bottom: 50px;
     width: 91%;
     display: flex;
     justify-content: right;

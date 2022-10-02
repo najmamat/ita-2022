@@ -19,7 +19,7 @@ const useLogicState = () => {
       const response = await blogServices.getArticle(params.url!)
       setArticle(response)
     } catch (error) {
-      setArticleError('Article not found')
+      setArticleError('Article not found. Backend is probably unavailable.')
       console.info(error)
     } finally {
       setIsLoading(false)

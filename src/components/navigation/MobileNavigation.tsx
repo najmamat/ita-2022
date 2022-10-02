@@ -52,6 +52,9 @@ const styles = {
   mobileMenuIcon: css`
     width: 40px;
     height: 40px;
+    @media screen and (max-width: ${theme.breakpoints.tablet}) {
+      margin-right: 30px;
+    }
   `,
 }
 

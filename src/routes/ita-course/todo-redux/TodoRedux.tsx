@@ -8,6 +8,7 @@ import { InsetCardContact } from '../../../components/InsetCardContact'
 import { HashLink as Link } from 'react-router-hash-link'
 import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { ScrollDownIcon } from '../../../components/ScrollDownIcon'
+import { Spacer } from '../../../components/Spacer'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { Todo } from './TodoAppRedux'
 import { addTodo, deleteTodo, setFilter, toggleTodo, updateTodo, updateTodos } from './todoSlice'
@@ -33,7 +34,10 @@ const styles = {
     align-items: center;
     justify-content: center;
     padding-bottom: 64px;
-    height: 88vh;
+    height: 84vh;
+    @media screen and (max-width: ${theme.breakpoints.mobile}) {
+      height: 80vh;
+    }
   `,
   todoBaseStyle: css`
     display: table;
@@ -233,17 +237,20 @@ export const TodoRedux = () => {
         </DragDropContext>
       </div>
       <ScrollDownIcon />
-      <div id='description'> </div>
-      <ProjectCodeInfo
-        title='Todo App & Redux'
-        description='This project was created at the start of IT-absolvent frontend ReactJS course.
+      <Spacer height={16} />
+      <div id='description'>
+        <ProjectCodeInfo
+          title='Todo App & Redux'
+          description='This project was created at the start of IT-absolvent frontend ReactJS course.
         The purpose of the project was to create a simple web application where user will be able to add, delete and change state of tasks. The application is able to filter tasks by type. Tasks are editable and can be marked as done. You can also drag and drop tasks.'
-        client='IT-absolvent React Course'
-        type='Portfolio project'
-        year='2022'
-        prevPageUrl={urls.ita.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/todo-redux'
-      />
+          client='IT-absolvent React Course'
+          type='Portfolio project'
+          year='2022'
+          prevPageUrl={urls.ita.root}
+          code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/todo-redux'
+        />
+      </div>
+
       <Footer />
     </>
   )

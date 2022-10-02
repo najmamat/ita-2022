@@ -1,6 +1,9 @@
 export const urls = {
   root: '/',
   contact: '/#contact',
+  work: '/#work',
+  about: '/#about',
+  pageNotFound: '/404',
   ita: {
     root: '/ita-course',
     jshistory: '/ita-course/jshistory',

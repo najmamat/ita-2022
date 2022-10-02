@@ -148,7 +148,7 @@ export const App = () => {
       <Header />
       <div className={styles.headingContainerStyle}>
         <h1 className={styles.headingStyle}>
-          I’m Matouš — a software developer&nbsp;
+          I’m Matouš — a&nbsp;software developer{' '}
           <span
             className={css`
               color: ${theme.colors.sonicsilver};

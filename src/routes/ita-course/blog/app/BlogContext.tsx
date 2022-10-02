@@ -14,6 +14,7 @@ const useLogicState = () => {
   const [search, setSearch] = useState('')
   const [filterError, setFilterError] = useState('')
   const [articleError, setArticleError] = useState('')
+  const [dbUnavailable, setDbUnavailable] = useState(false)
 
   useComponentDidMount(async () => {
     try {
@@ -21,6 +22,7 @@ const useLogicState = () => {
       setFilteredArticles(articles)
     } catch (error) {
       setArticleError('Database is unavailable')
+      setDbUnavailable(true)
     } finally {
       setIsLoading(false)
     }
@@ -44,6 +46,7 @@ const useLogicState = () => {
     search,
     filterError,
     articleError,
+    dbUnavailable,
   }
 }
 

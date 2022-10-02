@@ -47,15 +47,14 @@ const styles = {
 export const NavLinks = () => {
   return (
     <div className={styles.links}>
-      <a className={styles.navbarHref} href='#work'>
+      <Link className={styles.navbarHref} to={urls.work}>
         Work
-      </a>
-      <a className={styles.navbarHref} href='#about'>
+      </Link>
+      <Link className={styles.navbarHref} to={urls.about}>
         About
-      </a>
+      </Link>
       <Link className={styles.navbarHref} to={urls.contact}>
-        {' '}
-        Contact{' '}
+        Contact
       </Link>
     </div>
   )

@@ -6,6 +6,7 @@ import { HeadingRegular } from '../../../components/UICore/HeadingRegular'
 import { InsetCardContact } from '../../../components/InsetCardContact'
 import { ProjectCodeInfo } from '../../../components/ProjectWithCodeInfo'
 import { ScrollDownIcon } from '../../../components/ScrollDownIcon'
+import { Spacer } from '../../../components/Spacer'
 import { SubpageInfo } from '../../../components/SubpageInfo'
 import { arrayToMatrix } from '../../../helperFunctions'
 import { containerContentStyle, theme } from '../../../theme'
@@ -116,13 +117,17 @@ const GridComponent = () => {
 
   const handleCardClick = (card: Card) => {
     if (card.isGuessed === true) return
+    //aby se nemohla otáčet ta stejná karta
     if (flippedCards.length === 1 && flippedCards[0].id === card.id) return
+    //otočení karty
     setCards(
       cards.map(row => row.map(c => (c.id === card.id ? { ...c, isFlipped: !c.isFlipped } : c)))
     )
+    //otočení 1 karty
     if (flippedCards.length < 2) {
       setFlippedCards([...flippedCards, card] as [Card] | [Card, Card])
     }
+    //pokud jsou 2 otočené, vyhodnocení
     if (flippedCards.length !== 2) {
       return
     } else {
@@ -138,6 +143,7 @@ const GridComponent = () => {
         )
       )
     }
+    //reset otočených karet
     setFlippedCards([])
   }
 
@@ -159,15 +165,20 @@ export const MemoryGame = () => {
       <div
         className={css`
           ${containerContentStyle}
-          height: 88vh;
+          height: 84vh;
           display: flex;
           align-items: center;
+          @media screen and (max-width: ${theme.breakpoints.mobile}) {
+            height: 80vh;
+          }
         `}
         id='about'
       >
         <GridComponent />
       </div>
       <ScrollDownIcon />
+      <Spacer height={16} />
+
       <div id='description'> </div>
       <ProjectCodeInfo
         title='Memory Game'

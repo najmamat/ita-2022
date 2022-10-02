@@ -14,6 +14,7 @@ import { ITA } from './routes/ita-course/ITA-course'
 import { JSHistory } from './routes/ita-course/js-history/JSHistory'
 import { MemoryGame } from './routes/ita-course/memory-game/MemoryGame'
 import { Mortgage } from './routes/ita-course/mortgage/Mortgage'
+import { PageNotFound } from './404'
 import { ReserveNow } from './routes/school-projects/reserve-now/ReserveNow'
 import { RoomRes } from './routes/school-projects/RoomRes'
 import { SchoolProjects } from './routes/school-projects/SchoolProjects'
@@ -35,6 +36,7 @@ root.render(
     <ScrollToTop />
     <Routes>
       <Route path={urls.root} element={<App />}></Route>
+      <Route path='/portfolio' element={<App />}></Route>
       <Route path={urls.ita.root} element={<ITA />}></Route>
       <Route path={urls.ita.jshistory} element={<JSHistory />}></Route>
       <Route path={urls.ita.todoRedux} element={<TodoAppRedux />}></Route>
@@ -47,6 +49,7 @@ root.render(
       <Route path={urls.school.reserveNow} element={<ReserveNow />}></Route>
       <Route path={urls.school.wordleClone} element={<WordleClone />}></Route>
       <Route path={urls.students} element={<ZeptejteSeStudenta />}></Route>
+      <Route path='*' element={<PageNotFound />}></Route>
       <Route
         path={urls.ita.blog.blogNewArticle}
         element={

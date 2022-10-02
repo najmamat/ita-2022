@@ -43,6 +43,9 @@ const styles = {
     text-decoration: none;
     margin-left: 2%;
     color: ${theme.colors.black};
+    @media screen and (max-width: ${theme.breakpoints.tablet}) {
+      margin-left: 30px;
+    }
   `,
   iconContainer: css`
     position: relative;
@@ -57,7 +60,7 @@ const styles = {
     position: sticky;
     top: 0;
     z-index: 999;
-    width: 104%;
+    width: 103%;
     margin-left: -2%;
     background-color: ${theme.colors.white};
   `,
