@@ -154,7 +154,6 @@ export const ITA = () => {
       <div className={containerContentStyle} id='about'>
         <Grid2Column>
           <HeadingRegular>About IT-Absolvent Course</HeadingRegular>
-
           <RichText>
             <ParagraphBasic customStyle={{ marginBottom: '32px' }}>
               At the start of the course, we were introduced to the basic concepts of React.js

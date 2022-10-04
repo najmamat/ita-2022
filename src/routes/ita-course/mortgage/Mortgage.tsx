@@ -124,6 +124,17 @@ const calculateAnnualPayment = (arg: {
   return dataMortgage
 }
 
+type dataMortgage = {
+  order: number
+  monthlyPayment: number
+  amount: number
+  amountInflation: number
+  monthlyRatePayment: number
+  monthlyRatePaymentInflation: number
+  monthlyPrincipal: number
+  monthlyPrincipalInflation: number
+}
+
 type formattedDataMortgage = {
   firstPayment: dataMortgage
   sameYearPayments: dataMortgage[]
@@ -250,17 +261,6 @@ export const Mortgage = () => {
       <Footer />
     </div>
   )
-}
-
-type dataMortgage = {
-  order: number
-  monthlyPayment: number
-  amount: number
-  amountInflation: number
-  monthlyRatePayment: number
-  monthlyRatePaymentInflation: number
-  monthlyPrincipal: number
-  monthlyPrincipalInflation: number
 }
 
 const MortgageTable = (props: { mortgageData: formattedDataMortgage[]; months: number }) => {
