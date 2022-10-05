@@ -56,7 +56,7 @@ export const JSHistory = () => {
           <img src={jsImg} className={firstImgStyle} />
         </div>
       </div>
-      <div className={containerContentStyle} id='about'>
+      <div className={containerContentStyle} id={urls.anchor.about}>
         <Grid2Column>
           <HeadingRegular>The history of JavaScript</HeadingRegular>
 
@@ -159,24 +159,6 @@ export const JSHistory = () => {
           <img src={jsovertime} className={firstImgStyle} />
         </div>
       </div>
-      {/* <div className={containerContentStyle}>
-        <HeadingRegular>Other work</HeadingRegular>
-        <Spacer height={32} />
-        <WorkGrid>
-          <ProjectLinkCard
-            urlTo={urls.ita.todoRedux}
-            title='Todo App Redux'
-            type='IT-Absolvent mini project'
-            coverImage={sphereImg}
-          />
-          <ProjectLinkCard
-            urlTo={urls.ita.mortgageCalculator}
-            title='Mortgage Calculator'
-            type='IT-Absolvent mini project'
-            coverImage={ntbcode}
-          />
-        </WorkGrid>
-      </div> */}
       <ProjectCodeInfo
         title='Javascript history Web Page'
         description='This project was created at the start of IT-absolvent frontend ReactJS course. The
@@ -186,7 +168,7 @@ export const JSHistory = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/js-history'
+        code={urls.github.ita.jshistory}
       />
       <Footer />
     </div>

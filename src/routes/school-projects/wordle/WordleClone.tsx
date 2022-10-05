@@ -37,7 +37,7 @@ export const WordleClone = () => {
         client='Czech Technical University in Prague'
         type='Semestral project'
         year='2022'
-        code='https://github.com/najmamat/wordgame-code'
+        code={urls.github.school.wordle}
         prevPageUrl={urls.school.root}
       />
       <div
@@ -72,19 +72,23 @@ export const WordleClone = () => {
                 https://najmamat.github.io/word-game/
               </a>
             </ParagraphBasic>
-            <H2 customStyle={{ marginBottom: '32px', marginTop: '32px' }}>How to play</H2>
-            <ParagraphBasic customStyle={{ marginBottom: '32px' }}>
+            <Spacer height={32} />
+            <H2>How to play</H2>
+            <Spacer height={32} />
+            <ParagraphBasic>
               The goal of the game is to guess the desired word that is randomly chosen from english
               dictionary every round. The player has 6 attemps to guess the word. The player can
               only guess valid english words. Words can be entered with a keyboard or by clicking on
               an onscreen keyboard. The player has to submit the word by hitting ENTER.
             </ParagraphBasic>
-            <ParagraphBasic customStyle={{ marginBottom: '32px' }}>
+            <Spacer height={32} />
+            <ParagraphBasic>
               After the player submits the word, the game will color the letters by following rules.
               If this letter present in the word and it is on a right position, it will be colored
               green. If the letter is present in the word but it is on a wrong position, it will be
               colored yellow. If the letter is not present in the word, it will be colored grey.
             </ParagraphBasic>
+            <Spacer height={32} />
           </RichText>
         </Grid2Column>
         <HeadingRegular>Showcase picture</HeadingRegular>

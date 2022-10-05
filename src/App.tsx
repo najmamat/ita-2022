@@ -158,7 +158,7 @@ export const App = () => {
           </span>
         </h1>
       </div>
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <h2
           className={css`
             margin-top: 0px;
@@ -203,7 +203,7 @@ export const App = () => {
           />
         </div>
       </div>
-      <div className={containerContentStyle} id='about'>
+      <div className={containerContentStyle} id={urls.anchor.about}>
         <Grid2Column>
           <div>
             <HeadingRegular>About me</HeadingRegular>

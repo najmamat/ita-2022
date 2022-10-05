@@ -17,6 +17,7 @@ import { Spacer } from '../../components/Spacer'
 import { containerContentStyle, theme } from '../../theme'
 import { css } from '@emotion/css'
 import { formatMoney } from '../../helperFunctions'
+import { urls } from '../../urls'
 import { useEffect, useState } from 'react'
 import CV from '../../documents/CV.pdf'
 import githubIcon from './github-icon.png'
@@ -88,7 +89,7 @@ export const CVPage = () => {
       <div className={containerContentStyle} id='work'>
         <Grid2Column>
           <h1 className={styles.headingExtraLarge}>Matouš Najman</h1>
-          <div className='list-wrapper'>
+          <div>
             {/* <Spacer height={64} /> */}
             <ListItemTight>
               <div className={styles.projectDetailsWrapperStyle}>
@@ -153,7 +154,7 @@ export const CVPage = () => {
           </div>
         </Grid2Column>
       </div>
-      <div className={styles.contentBlockContainer} id='about'>
+      <div className={styles.contentBlockContainer} id={urls.anchor.about}>
         <Grid2Column>
           <HeadingRegular>Technologies I have worked with</HeadingRegular>
 

@@ -91,9 +91,9 @@ export const ITA = () => {
         type='React, Typescript course'
         year='2022'
         prevPageUrl={urls.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course'
+        code={urls.github.ita.root}
       />
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <h2
           className={css`
             margin-top: 0px;
@@ -151,7 +151,7 @@ export const ITA = () => {
           />
         </div>
       </div>
-      <div className={containerContentStyle} id='about'>
+      <div className={containerContentStyle} id={urls.anchor.about}>
         <Grid2Column>
           <HeadingRegular>About IT-Absolvent Course</HeadingRegular>
           <RichText>

@@ -30,7 +30,7 @@ export const RoomRes = () => {
         client='Czech Technical University in Prague'
         type='Semestral project'
         year='2022'
-        code='https://github.com/najmamat/room-res'
+        code={urls.github.school.roomres}
         prevPageUrl={urls.school.root}
       />
       <div

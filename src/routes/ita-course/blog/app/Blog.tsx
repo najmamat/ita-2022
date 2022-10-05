@@ -156,7 +156,7 @@ export const BlogPage = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/blog'
+        code={urls.github.ita.blog}
       />
       <div
         className={css`
@@ -169,7 +169,7 @@ export const BlogPage = () => {
             padding: 32px 40px;
           }
         `}
-        id='about'
+        id={urls.anchor.about}
       >
         <Grid2Column>
           <HeadingRegular>About Blog App</HeadingRegular>

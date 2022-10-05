@@ -172,7 +172,7 @@ export const MemoryGame = () => {
             height: 80vh;
           }
         `}
-        id='about'
+        id={urls.anchor.about}
       >
         <GridComponent />
       </div>
@@ -190,7 +190,7 @@ export const MemoryGame = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/memory-game'
+        code={urls.github.ita.memoryGame}
       />
       <Footer />
     </>

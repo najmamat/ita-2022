@@ -165,7 +165,7 @@ export const TodoRedux = () => {
   return (
     <>
       <Header />
-      <div className={styles.baseStyle} id='about'>
+      <div className={styles.baseStyle} id={urls.anchor.about}>
         <h2 className={styles.h2Style}>todos</h2>
         <div>
           <FilterButton
@@ -247,7 +247,7 @@ export const TodoRedux = () => {
           type='Portfolio project'
           year='2022'
           prevPageUrl={urls.ita.root}
-          code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/todo-redux'
+          code={urls.github.ita.todoRedux}
         />
       </div>
 

@@ -83,7 +83,7 @@ export const SubpageInfo = (props: InfoProps) => {
             <button className={styles.btnStyle}>Back</button>
           </Link>
         </div>
-        <div className='list-wrapper'>
+        <div>
           <RichText>
             <ParagraphBasic>{props.description}</ParagraphBasic>
           </RichText>

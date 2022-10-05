@@ -23,21 +23,19 @@ const styles = {
 
 export const ScrollDownIcon = () => {
   const [isVisible, setIsVisible] = useState(true)
-  const [scrollY, setScrollY] = useState(0)
-
-  useComponentDidMount(() => {
-    window.addEventListener('scroll', () => {
-      setScrollY(window.scrollY)
-    })
-  })
 
   useEffect(() => {
-    if (scrollY === 0) {
-      setIsVisible(true)
-    } else {
-      setIsVisible(false)
+    window.addEventListener('scroll', () => {
+      if (window.scrollY === 0) {
+        setIsVisible(true)
+      } else {
+        setIsVisible(false)
+      }
+    })
+    return () => {
+      window.removeEventListener('scroll', () => {})
     }
-  }, [scrollY])
+  }, [])
 
   return (
     <AnimatePresence>

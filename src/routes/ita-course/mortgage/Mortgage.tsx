@@ -172,7 +172,7 @@ export const Mortgage = () => {
   return (
     <div>
       <Header />
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <Grid2Column>
           <form>
             <HeadingRegular>Amount</HeadingRegular>
@@ -246,7 +246,7 @@ export const Mortgage = () => {
         <SecondGraphComponent mortgageData={dataMortgage} />
       </div>
       <MortgageTable mortgageData={formatMortgageData(dataMortgage)} months={years * 12} />
-      <div id='about' />
+      <div id={urls.anchor.about}> </div>
       <ProjectCodeInfo
         title='Mortgage Calculator'
         description='This project was created as a part of IT-absolvent frontend ReactJS course. The
@@ -255,7 +255,7 @@ export const Mortgage = () => {
         type='Portfolio project'
         year='2022'
         prevPageUrl={urls.ita.root}
-        code='https://github.com/najmamat/portfolio/tree/main/src/routes/ita-course/mortgage'
+        code={urls.github.ita.mortgage}
       />
       <InsetCardContact />
       <Footer />

@@ -80,7 +80,7 @@ type InfoProps = {
 
 export const ProjectCodeInfo = (props: InfoProps) => {
   return (
-    <div className={containerContentStyle} id='work'>
+    <div className={containerContentStyle} id={urls.anchor.work}>
       <Grid2Column>
         <div className={styles.leftColumnStyle}>
           <h1 className={styles.headingExtraLarge}>{props.title}</h1>
@@ -89,7 +89,7 @@ export const ProjectCodeInfo = (props: InfoProps) => {
             <button className={styles.btnStyle}>Back</button>
           </Link>
         </div>
-        <div className='list-wrapper'>
+        <div>
           <RichText>
             <ParagraphBasic>{props.description}</ParagraphBasic>
           </RichText>

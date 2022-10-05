@@ -73,7 +73,7 @@ export const ReserveNow = () => {
         client='Czech Technical University in Prague'
         type='Semestral project'
         year='2022'
-        code='https://github.com/najmamat/reservenow'
+        code={urls.github.school.reservenow}
         prevPageUrl={urls.school.root}
       />
 
