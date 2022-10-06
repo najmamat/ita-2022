@@ -84,7 +84,7 @@ const calculateAnnualPayment = (arg: {
   const months = arg.years * 12
   const monthlyPayment = calcMonthlyPayment(arg.amount, monthlyInterest, arg.years)
 
-  const DataMortgage = [
+  const dataMortgage = [
     {
       order: 1,
       monthlyPayment: monthlyPayment,
@@ -101,14 +101,14 @@ const calculateAnnualPayment = (arg: {
   Array.from({ length: months - 1 }).forEach((_, i) => {
     const order = i + 2 // +2 so the order starts at 2, bcs the first row is already in the array
     const amount =
-      DataMortgage[i].amount - (monthlyPayment - DataMortgage[i].amount * monthlyInterest)
+      dataMortgage[i].amount - (monthlyPayment - dataMortgage[i].amount * monthlyInterest)
     const amountInflation = amountWithInflation(amount, i, arg.inflation)
-    const monthlyRatePayment = DataMortgage[i].amount * monthlyInterest
+    const monthlyRatePayment = dataMortgage[i].amount * monthlyInterest
     const monthlyRatePaymentInflation = amountWithInflation(monthlyRatePayment, i, arg.inflation)
-    const monthlyPrincipal = monthlyPayment - DataMortgage[i].amount * monthlyInterest
+    const monthlyPrincipal = monthlyPayment - dataMortgage[i].amount * monthlyInterest
     const monthlyPrincipalInflation = amountWithInflation(monthlyPrincipal, i, arg.inflation)
     const propertyValue = arg.amount * calcValueIncrease(i + 1, arg.inflation)
-    DataMortgage.push({
+    dataMortgage.push({
       order,
       monthlyPayment,
       amount,
@@ -121,7 +121,7 @@ const calculateAnnualPayment = (arg: {
     })
   })
 
-  return DataMortgage
+  return dataMortgage
 }
 
 type DataMortgage = {
