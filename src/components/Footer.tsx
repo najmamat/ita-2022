@@ -75,17 +75,17 @@ export const Footer = () => {
       <div className={styles.footerFlexContainerTopStyle}>
         <ul className={styles.footerListStyle}>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='/' aria-current='page'>
+            <Link className={styles.footerLinkStyle} to={urls.root} aria-current='page'>
               Home
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='#work' aria-current='page'>
+            <Link className={styles.footerLinkStyle} to={urls.anchor.work} aria-current='page'>
               Work
             </Link>
           </li>
           <li className={styles.footerListItemStyle}>
-            <Link className={styles.footerLinkStyle} to='#about' aria-current='page'>
+            <Link className={styles.footerLinkStyle} to={urls.anchor.about} aria-current='page'>
               About
             </Link>
           </li>

@@ -24,16 +24,18 @@ const styles = {
 export const ScrollDownIcon = () => {
   const [isVisible, setIsVisible] = useState(true)
 
+  const handleScroll = () => {
+    if (window.scrollY === 0) {
+      setIsVisible(true)
+    } else {
+      setIsVisible(false)
+    }
+  }
+
   useEffect(() => {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY === 0) {
-        setIsVisible(true)
-      } else {
-        setIsVisible(false)
-      }
-    })
+    window.addEventListener('scroll', handleScroll)
     return () => {
-      window.removeEventListener('scroll', () => {})
+      window.removeEventListener('scroll', handleScroll)
     }
   }, [])
 

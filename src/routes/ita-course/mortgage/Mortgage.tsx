@@ -84,7 +84,7 @@ const calculateAnnualPayment = (arg: {
   const months = arg.years * 12
   const monthlyPayment = calcMonthlyPayment(arg.amount, monthlyInterest, arg.years)
 
-  const dataMortgage = [
+  const DataMortgage = [
     {
       order: 1,
       monthlyPayment: monthlyPayment,
@@ -101,14 +101,14 @@ const calculateAnnualPayment = (arg: {
   Array.from({ length: months - 1 }).forEach((_, i) => {
     const order = i + 2 // +2 so the order starts at 2, bcs the first row is already in the array
     const amount =
-      dataMortgage[i].amount - (monthlyPayment - dataMortgage[i].amount * monthlyInterest)
+      DataMortgage[i].amount - (monthlyPayment - DataMortgage[i].amount * monthlyInterest)
     const amountInflation = amountWithInflation(amount, i, arg.inflation)
-    const monthlyRatePayment = dataMortgage[i].amount * monthlyInterest
+    const monthlyRatePayment = DataMortgage[i].amount * monthlyInterest
     const monthlyRatePaymentInflation = amountWithInflation(monthlyRatePayment, i, arg.inflation)
-    const monthlyPrincipal = monthlyPayment - dataMortgage[i].amount * monthlyInterest
+    const monthlyPrincipal = monthlyPayment - DataMortgage[i].amount * monthlyInterest
     const monthlyPrincipalInflation = amountWithInflation(monthlyPrincipal, i, arg.inflation)
     const propertyValue = arg.amount * calcValueIncrease(i + 1, arg.inflation)
-    dataMortgage.push({
+    DataMortgage.push({
       order,
       monthlyPayment,
       amount,
@@ -121,10 +121,10 @@ const calculateAnnualPayment = (arg: {
     })
   })
 
-  return dataMortgage
+  return DataMortgage
 }
 
-type dataMortgage = {
+type DataMortgage = {
   order: number
   monthlyPayment: number
   amount: number
@@ -135,16 +135,16 @@ type dataMortgage = {
   monthlyPrincipalInflation: number
 }
 
-type formattedDataMortgage = {
-  firstPayment: dataMortgage
-  sameYearPayments: dataMortgage[]
+type FormattedDataMortgage = {
+  firstPayment: DataMortgage
+  sameYearPayments: DataMortgage[]
   year: number
 }
 
-const formatMortgageData = (data: dataMortgage[]) => {
-  const result = [] as formattedDataMortgage[]
-  let sameYearPayments = [] as dataMortgage[]
-  let firstYearPayment = {} as dataMortgage
+const formatMortgageData = (data: DataMortgage[]) => {
+  const result = [] as FormattedDataMortgage[]
+  let sameYearPayments = [] as DataMortgage[]
+  let firstYearPayment = {} as DataMortgage
   let year = 1
   data.forEach(row => {
     if ((row.order - 1) % 12 === 0) {
@@ -153,8 +153,8 @@ const formatMortgageData = (data: dataMortgage[]) => {
       sameYearPayments.push(row)
       if (row.order % 12 === 0) {
         result.push({ firstPayment: firstYearPayment, sameYearPayments, year })
-        sameYearPayments = [] as dataMortgage[]
-        firstYearPayment = {} as dataMortgage
+        sameYearPayments = [] as DataMortgage[]
+        firstYearPayment = {} as DataMortgage
         year++
       }
     }
@@ -167,7 +167,7 @@ export const Mortgage = () => {
   const [interest, setInterest] = useState(3.5)
   const [years, setYears] = useState(30)
   const [inflation, setInflation] = useState(2)
-  const dataMortgage = calculateAnnualPayment({ amount, interest, years, inflation })
+  const DataMortgage = calculateAnnualPayment({ amount, interest, years, inflation })
 
   return (
     <div>
@@ -216,7 +216,7 @@ export const Mortgage = () => {
           <div>
             <HeadingRegular>Your monthly payment</HeadingRegular>
             <H2 customStyle={{ marginTop: '32px' }}>
-              {formatMoney(dataMortgage[0].monthlyPayment)}
+              {formatMoney(DataMortgage[0].monthlyPayment)}
             </H2>
           </div>
         </Grid2Column>
@@ -231,7 +231,7 @@ export const Mortgage = () => {
           }
         `}
       >
-        <FirstGraphComponent mortgageData={dataMortgage} />
+        <FirstGraphComponent mortgageData={DataMortgage} />
       </div>
       <div
         className={css`
@@ -243,9 +243,9 @@ export const Mortgage = () => {
           }
         `}
       >
-        <SecondGraphComponent mortgageData={dataMortgage} />
+        <SecondGraphComponent mortgageData={DataMortgage} />
       </div>
-      <MortgageTable mortgageData={formatMortgageData(dataMortgage)} months={years * 12} />
+      <MortgageTable mortgageData={formatMortgageData(DataMortgage)} months={years * 12} />
       <div id={urls.anchor.about}> </div>
       <ProjectCodeInfo
         title='Mortgage Calculator'
@@ -263,7 +263,7 @@ export const Mortgage = () => {
   )
 }
 
-const MortgageTable = (props: { mortgageData: formattedDataMortgage[]; months: number }) => {
+const MortgageTable = (props: { mortgageData: FormattedDataMortgage[]; months: number }) => {
   return (
     <div className={containerContentStyle}>
       <TableContainer
@@ -310,8 +310,8 @@ const MortgageTable = (props: { mortgageData: formattedDataMortgage[]; months: n
 }
 
 const Row = (props: {
-  firstPayment: dataMortgage
-  otherPayments: dataMortgage[]
+  firstPayment: DataMortgage
+  otherPayments: DataMortgage[]
   year: number
 }) => {
   const [open, setOpen] = useState(false)
@@ -384,7 +384,7 @@ const Row = (props: {
   )
 }
 
-const FirstGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
+const FirstGraphComponent = (props: { mortgageData: DataMortgage[] }) => {
   return (
     <ResponsiveContainer width='85%' height={400}>
       <LineChart
@@ -431,7 +431,7 @@ const FirstGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
   )
 }
 
-const SecondGraphComponent = (props: { mortgageData: dataMortgage[] }) => {
+const SecondGraphComponent = (props: { mortgageData: DataMortgage[] }) => {
   return (
     <ResponsiveContainer width='85%' height={400}>
       <LineChart

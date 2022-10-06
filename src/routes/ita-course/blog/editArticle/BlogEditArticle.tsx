@@ -91,7 +91,7 @@ export const BlogEditArticle = () => {
   return (
     <div>
       <Header />
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <form
           className={styles.testStyle}
           onSubmit={e => {
@@ -100,7 +100,7 @@ export const BlogEditArticle = () => {
           }}
         >
           <Grid2Column>
-            <div id='about'>
+            <div id={urls.anchor.about}>
               <h1 className={styles.headingExtraLarge}>Edit Article</h1>
               <motion.button
                 whileHover={{ scale: 1.1 }}

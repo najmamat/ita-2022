@@ -89,7 +89,7 @@ export const BlogNewArticle = () => {
   return (
     <div>
       <Header />
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <form
           className={styles.testStyle}
           onSubmit={e => {
@@ -98,7 +98,7 @@ export const BlogNewArticle = () => {
           }}
         >
           <Grid2Column>
-            <div id='about'>
+            <div id={urls.anchor.about}>
               <h1 className={styles.headingExtraLarge}>Create New Article</h1>
               <motion.button
                 whileHover={{ scale: 1.1 }}

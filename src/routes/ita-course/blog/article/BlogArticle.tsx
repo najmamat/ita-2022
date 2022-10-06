@@ -66,8 +66,8 @@ export const BlogArticle = () => {
   return (
     <div>
       <Header />
-      <div className={containerContentStyle} id='work'>
-        <h1 className={styles.headingExtraLarge} id='about'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
+        <h1 className={styles.headingExtraLarge} id={urls.anchor.about}>
           {logic.article?.title}
         </h1>
         <Link to={urls.ita.blog.root}>

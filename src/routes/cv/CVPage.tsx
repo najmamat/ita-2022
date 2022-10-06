@@ -86,7 +86,7 @@ export const CVPage = () => {
   return (
     <>
       <Header />
-      <div className={containerContentStyle} id='work'>
+      <div className={containerContentStyle} id={urls.anchor.work}>
         <Grid2Column>
           <h1 className={styles.headingExtraLarge}>Matouš Najman</h1>
           <div>

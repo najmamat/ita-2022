@@ -58,7 +58,7 @@ const styles = {
     background-color: ${theme.colors.backgGrey};
     cursor: pointer;
     :hover {
-      background-color: #dcdcdc;
+      background-color: ${theme.colors.backgGrey};
       opacity: 0.8;
     }
   `,
